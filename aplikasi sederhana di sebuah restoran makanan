@@ -1,0 +1,40 @@
+Ariel Ramadhanty - 043219038
+
+public class Menu {
+    private String nama;
+    private int harga;
+    private String kategori;
+
+    publik Menu(String nama, int harga, String kategori) {
+        this.nama = nama;
+        this.harga = harga;
+        this.kategori = kategori;
+    }
+
+    public String getnama () {
+        return nama;
+    }
+
+    public void setnama(String nama) {
+        this.nama = nama;
+    }
+
+    public in getharga() {
+        return harga;
+    }
+
+    public void setharga(int harga) {
+        this.harga = harga;
+    }
+
+    public String getkategori() {
+        return kategori;
+    }
+
+    public void setkategori(String kategori) {
+        this.kategori = kategori;
+    }
+
+    Override
+    public String toString () {
+        return nama + " - Rp " + harga;
