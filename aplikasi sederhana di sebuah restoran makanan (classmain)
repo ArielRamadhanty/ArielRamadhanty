@@ -1,0 +1,111 @@
+Ariel Ramadhanty - 043219038
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    private static ArrayList<Menu> menuList = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String [] args) {
+        // Menambahkan menu default 
+        int Menu();
+        while (true) {
+            System.out.println("=== Aplikasi Restoran ===");
+            System.out.println("1. Menu Pelanggan");
+            System.out.println("2. Mnanajemen Menu");
+            System.out.println("3. Keluar");
+            System.out.println("Pilih Menu");
+            int pilihan = Integer.parseInt(scanner.nextLine());
+
+            switch (pilihan) {
+                case 1 -> menuPelanggan();
+                case 2 -> menuManajemen();
+                case 3 -> {
+                    System.out.println("Terima Kasih telah menggunakan aplikasi restoran.");
+                    return;
+                }
+                default -> System.out.println("Pilihan tidak tersedia.");
+            }
+        }
+    }
+
+    private static void intMenu() {
+        menuList.add(new Menu("Nasi Goreng", 25000, "Makanan"));
+        menuList.add(new Menu("Mie Ayam", 20000, "Makanan"));
+        menuList.add(new Menu("Ayam Bakar", 30000, "Makanan"));
+        menuList.add(new Menu("Sate Kambing", 40000, "Makanan"));
+        menuList.add(new Menu("Es Teh", 5000, "Minuman"))
+        menuIList.add(new Menu("Es Kopyor", 15000, "Minuman"));
+        menuList.add(new Menu("Jus Jeruk", 10000, "Minuman"));
+        menuList.add(new Menu("Kopi Hitam", 12000, "Minuman"));
+    }
+
+    private static void menuPelanggan() {
+        System.out.println("=== Menu Pelanggan ===");
+        tampilkanMenu();
+        inputPesanan();
+        cetakStruk();
+    } 
+
+    private static void tampilkanMenu() {
+        System.out.println("\nDaftat Menu:");
+        System.out.println("Makanan:");
+        menuIList.stream()
+        .filter(menu -> menu.getKategori().equals("Makanan"))
+        .forEach(menu -> System.out.println("- " + menu));
+        System.out.println("Minuman:");
+        menuIList.stream()
+        .filter(menu -> menu.getKategori().equals("Minuman"))
+        .forEach(menu -> System.out.println("- " + menu));
+    }
+
+    private static void inputPesanan() {
+        while (true) {
+            System.out.println("Masukkan nama menu (ketik 'selesai' jika selesai): ");
+            String namaMenu = scanner.nextLine
+            if (namaMenu.equalsIgnoreCase("selesai")) {
+                break;
+            }
+            Menu menu = menuList.stream()
+            .fillter(m -> m.getNama().equalsIgnoreCase(namaMenu))
+            .findFirst()
+            .orElse(null);
+            if (menu != null) {
+                System.out.println("Masukkan jumlah pesanan: ");
+                int jumlah = integer.parseInt(Scanner.nextLine());
+                pesanan.put(menu, pesanan.georDefault(menu, 0) + jumlah);
+            } else {
+                System.out.println("Menu tidak ditemukan.");
+            }
+        }
+        
+    }
+
+    private static void cetakStruk() {
+        int totalharga = 0;
+        System.out.println("\nStruk Pembelian:");
+        for (Menu menu : pesanan.keySet()) {
+            int jumlah = pesanan.get(menu);
+            int haga = menu.getharga() * jumlah;
+            Sysem.out.println(menu.getNama() + " x" + jumlah + " = Rp " + harga);
+            totalharga += harga;
+        }
+        int pajak = (int) (totalharga * 0.1);
+        int biayaPelayanan = 20000;
+        int totalbiaya = totalharga + pajak + biayaPelayanan;
+
+        // Diskon dan promo 
+        int diskon = totalbiaya > 100000 ? (int) (totalbiaya * 0.1) : 0;
+        System.out.println("Subtotal : RP " + totalharga);
+        System.out.println("Pajak (10%): Rp " + pajak);
+        System.out.println("Biaya Pelayanan: Rp " + biayaPelayanan);
+        System.out.println("Diskon: Rp " + diskon);
+        System.out.println("Total: Rp" +(totalbiaya - diskon));
+    }
+
+    private static void menuManajemen() {
+        System.out.println('=== Manajemen Mneu ===');
+        // Implementasi manajemen menu (tambah, ubah, hapus)
+    }
+}
