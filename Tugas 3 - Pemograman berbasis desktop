@@ -1,0 +1,168 @@
+Ariel Ramadhanty - 043219038
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+abstract class MenuItem {
+    private String nama;
+    private double harga;
+    private String kategori;
+
+    public MenuItem(String nama, double harga, String kategori) {
+        this.nama = nama;
+        this.harga = harga;
+        this.kategori = kategori;
+    }
+
+    public abstract void tampilMenu ();
+
+    public double getHarga() {
+        return harga;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+}
+
+class Makanan extends MenuItem {
+    private String jenisMakanan;
+
+    public Makanan(String nama, double harga, String kategori, String jenisMakanan) {
+        super(nama, harga, kategori);
+        this.jenisMakanan = jenisMakanan;
+    }
+
+    public void tampilMenu() {
+        System.out.println("Makanan: " + getNama() + " | Harga: " + getHarga() + " | jenis: " + jenisMakanan);
+    }
+}
+
+class Minuman extends MenuItem {
+    private String jenisMakanan;
+
+    public Minuman(String nama, double harga, String kategori, String jenisMinuman) {
+        super(nama, harga, kategori);
+        this.jenisMinuman = jenisMinuman;
+    }
+
+    public void tampilMenu() {
+        System.out.println("Minuman: " + getNama() + " | Harga: " + getHarga() + " | jenis: " + jenisMinuman);
+    }
+}
+
+class Diskon extends MenuItem {
+    private double diskon;
+
+    public Diskon(String nama, double harga, String kategori, double diskon) {
+        super(nama, harga, kategori);
+        this.diskon = diskon;
+    }
+
+    public void tampilMenu() {
+        System.out.println("Diskon: " + getNama() + " | Diskon: " + diskon + "%");
+    }
+
+    public double hitungHargaDiskon() {
+        return getHarga() - (getHarga() * diskon / 100);
+    }
+}
+
+class Menu {
+    private ArrayList<MenuItem> items;
+
+    public Menu() {
+        items = nem ArrayList<>();
+    }
+
+    public void tambahItem(MenuItem item) {
+        items.add(item);
+    }
+
+    public void tampilkanMenu() {
+        System.out.println("Menu Restoran:");
+        for (MenuItem item : items) {
+            item.tampilMenu();
+        }
+    }
+
+    public ArrayList<MenuItem> getitems() {
+        return items;
+    }
+}
+
+class Pesanan {
+    private ArrayList<MenuItem> items;
+
+    public pesanan() {
+        pesanan = new ArrayList<>(;)
+    }
+
+    public void tambahPesanan(MenuItem item) {
+        pesanan.add(item);
+    }
+
+    public double hitungtotal() {
+        double total = 0;
+        for (MenuItem item : pesanan) {
+            if (item instanceof diskon) {
+                Total += ((Diskon) item).hitungHargaDiskon();
+            } else {
+                total += item.getHarga();
+            }
+        }
+        return total;
+    }
+
+    public void tampilStruk() {
+        System.out.println("Struk Pesanan: ");
+        for (MenuItem itrm : pesanan) {
+            item.tampilMenu();
+        }
+        System.out.println("Total: " + hitungTotal());
+    }
+}
+
+public class ManajemenRestoran {
+    private static Menu menu = new Menu();
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        loadMenuFromFile("menu.txt");
+        int pilihan;
+        do
+        System.out.println("1. Tambah Item Menu");
+        System.out.println("2. Tampilkan Menu");
+        System.out.println("3. Pesan");
+        System.out.println("4. Simpan Menu ke File");
+        System.out.println("5. Keluar");
+        System.out.println("Pilih");
+        pilihan = scanner.nextInt();
+        scanner.nextLine|(); // membersihkan newline
+
+        switch (pilihan) {
+            case 1:
+                tambahItemMenu();
+                break;
+            
+            case 2:
+                menu.tampilkanMenu();
+                break;
+                
+            case 3:
+                prosesPemesanan();
+                break;
+                
+            case 4:
+                SaveMenuToFile("menu.txt");
+                break;
+
+            case 5:
+                System.out.println(|"keluar dari program.");
+                break;
+            case 6:
+                System.out.println("Terima kasih.");
+                break;
+        }
+    }
+}
